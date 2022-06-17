@@ -23,7 +23,7 @@
  */
 
 #include "ompi_config.h"
-
+#include <stdio.h>
 #include "pml_ob1.h"
 #include "pml_ob1_sendreq.h"
 #include "pml_ob1_recvreq.h"
@@ -244,6 +244,7 @@ int mca_pml_ob1_send(const void *buf,
                      mca_pml_base_send_mode_t sendmode,
                      ompi_communicator_t * comm)
 {
+    fprintf(stderr, "\nTrying this\n");
     mca_pml_ob1_comm_proc_t *ob1_proc = mca_pml_ob1_peer_lookup (comm, dst);
     ompi_proc_t *dst_proc = ob1_proc->ompi_proc;
     mca_bml_base_endpoint_t* endpoint = mca_bml_base_get_endpoint (dst_proc);
