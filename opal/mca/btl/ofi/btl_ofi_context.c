@@ -247,6 +247,7 @@ scalable_fail:
 
 void mca_btl_ofi_context_finalize(mca_btl_ofi_context_t *context, bool scalable_ep)
 {
+    fprintf(stderr, "\nStarted\n");
 
     /* if it is a scalable ep, we have to close all contexts. */
     if (scalable_ep) {
@@ -264,11 +265,11 @@ void mca_btl_ofi_context_finalize(mca_btl_ofi_context_t *context, bool scalable_
     }
 
     /* Can we destruct the object that hasn't been constructed? */
-    fprintf(stderr, "HERE I AM");
+    fprintf(stderr, "\nHERE I AM\n");
     if (context->rdma_comp_list.fl_num_allocated != 0){
         OBJ_DESTRUCT(&context->rdma_comp_list);
     }
-    fprintf(stderr, "Continuing");
+    fprintf(stderr, "\nContinuing\n");
 
     if (TWO_SIDED_ENABLED) {
         OBJ_DESTRUCT(&context->frag_comp_list);
