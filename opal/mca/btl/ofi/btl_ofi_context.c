@@ -264,9 +264,11 @@ void mca_btl_ofi_context_finalize(mca_btl_ofi_context_t *context, bool scalable_
     }
 
     /* Can we destruct the object that hasn't been constructed? */
+    fprintf(stderr, "HERE I AM");
     if (context->rdma_comp_list.fl_num_allocated != 0){
         OBJ_DESTRUCT(&context->rdma_comp_list);
     }
+    fprintf(stderr, "Continuing");
 
     if (TWO_SIDED_ENABLED) {
         OBJ_DESTRUCT(&context->frag_comp_list);
